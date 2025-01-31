@@ -8,7 +8,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "/tmp"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Garante que a pasta de uploads existe
 
-client = OpenAI(api_key="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")  # Substitua pela sua API Key
+client = OpenAI(api_key=YOUR_API_KEY)  # Substitua pela sua API Key
 
 
 
