@@ -1,16 +1,14 @@
 from flask import Flask, request, jsonify, render_template
 from openai import OpenAI
 import os
-import spacy
 import pdfplumber
 
 app = Flask(__name__)
-UPLOAD_FOLDER = "uploads"
+UPLOAD_FOLDER = "/tmp"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Garante que a pasta de uploads existe
 
 client = OpenAI(api_key="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")  # Substitua pela sua API Key
 
-nlp = spacy.load("pt_core_news_sm")
 
 def extrair_texto(arquivo_path):
     """Extrai texto de arquivos .txt e .pdf"""
@@ -44,10 +42,7 @@ def chat():
         data = request.json
         user_input = data.get("input", "")
 
-    # Processamento de NLP (Lematização)
-    doc = nlp(user_input)
-    for token in doc:
-        prompt += token.lemma_ + " "
+
 
     if not user_input:
         return jsonify({"error": "Nenhuma mensagem enviada"}), 400
@@ -57,7 +52,7 @@ def chat():
             messages=[
                 {
                     "role": "user",
-                    "content": f"Considere o seguinte e-mail com as seguintes palavras-chave: {prompt}. Você considera esse e-mail PRODUTIVO (pergunta sobre alguma tarefa ou prazo) ou IMPRODUTIVO (não pergunta sobre prazo ou tarefa específica)? Responda somente com PRODUTIVO ou IMPRODUTIVO mais um delimitador ( | ) mais uma resposta adequada para o e-mail."
+                    "content": f"Considere o seguinte e-mail com as seguintes palavras-chave: {user_input}. Você considera esse e-mail PRODUTIVO (pergunta sobre alguma tarefa ou prazo) ou IMPRODUTIVO (não pergunta sobre prazo ou tarefa específica)? Responda somente com PRODUTIVO ou IMPRODUTIVO mais um delimitador ( | ) mais uma resposta adequada para o e-mail."
                 }
             ],
             model="gpt-4o",
@@ -69,4 +64,4 @@ def chat():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

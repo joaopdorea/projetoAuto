@@ -149,3 +149,17 @@ span {
 .dark-mode .dark-mode-btn:hover {
     background: #f0f0f0;
 }
+
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .container {
+        padding: 15px;
+        width: 380px;
+    }
+
+    .enviar-btn, .dark-mode-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
