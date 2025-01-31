@@ -13,6 +13,12 @@ Este projeto é um Web App desenvolvido com **Python e Flask**, que utiliza a **
    - Uma **resposta sugerida** para o e-mail.
 4. O diagnóstico e a sugestão de resposta são exibidos na tela.
 
+🔤 Stemmatização no Projeto
+
+A stemmatização foi implementada para reduzir palavras à sua raiz, auxiliando na análise do conteúdo do e-mail. Isso melhora a precisão ao identificar palavras-chave relevantes. No projeto, usamos a biblioteca NLTK (SnowballStemmer) para processar os textos antes do envio para a API do ChatGPT. Essa biblioteca foi escolhida por ser mais rápida e leve para a realização do deploy na Vercel.
+
+Essa técnica ajuda a manter a análise mais uniforme e eficiente.
+
 ## 🛠️ Tecnologias Utilizadas
 
 - **Python** 🐍
