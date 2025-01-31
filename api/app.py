@@ -7,7 +7,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = "/tmp"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Garante que a pasta de uploads existe
 
-client = OpenAI(api_key="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")  # Substitua pela sua API Key
+client = OpenAI(api_key=YOUR_API_KEY)  # Substitua pela sua API Key
 
 
 def extrair_texto(arquivo_path):
