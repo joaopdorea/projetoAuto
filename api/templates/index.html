@@ -56,16 +56,23 @@ async function enviarMensagem() {
 
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
+            
 
             // Salva no localStorage para lembrar a preferência do usuário
             let isDarkMode = document.body.classList.contains("dark-mode");
             localStorage.setItem("darkMode", isDarkMode);
+
+            document.getElementById("darkModeButton").innerText = isDarkMode ? "Modo Claro" : "Modo Escuro";
+            
         }
 
         // Verifica o localStorage ao carregar a página
         window.onload = function () {
             if (localStorage.getItem("darkMode") === "true") {
                 document.body.classList.add("dark-mode");
+                document.getElementById("darkModeButton").innerText = "Modo Claro"
+            }else{
+                document.getElementById("darkModeButton").innerText = "Modo Escuro"
             }
         };
     </script>
@@ -80,7 +87,7 @@ async function enviarMensagem() {
         <span id="resposta"></span>
         <p>Resposta sugerida:</p>
         <span id="respostaSugerida"></span>
-        <button class="dark-mode-btn" onclick="toggleDarkMode()">Modo Escuro</button>
+        <button id = "darkModeButton" class="dark-mode-btn" onclick="toggleDarkMode()">Modo Escuro</button>
     </div>
 
     

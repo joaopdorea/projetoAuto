@@ -2,12 +2,20 @@ from flask import Flask, request, jsonify, render_template
 from openai import OpenAI
 import os
 import pdfplumber
+from nltk.stem.snowball import SnowballStemmer
 
 app = Flask(__name__)
 UPLOAD_FOLDER = "/tmp"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Garante que a pasta de uploads existe
 
-client = OpenAI(api_key="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")  # Substitua pela sua API Key
+client = OpenAI(api_key="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")  # Substitua pela sua API Key
+
+
+
+def stemmatizar(texto, idioma = "portuguese"):
+    stemmer = SnowballStemmer(idioma)
+    palavras = texto.split()
+    return " ".join(stemmer.stem(p) for p in palavras)
 
 
 def extrair_texto(arquivo_path):
@@ -46,13 +54,15 @@ def chat():
 
     if not user_input:
         return jsonify({"error": "Nenhuma mensagem enviada"}), 400
+    
+    prompt = stemmatizar(user_input)
 
     try:
         chat_completion = client.chat.completions.create(
             messages=[
                 {
                     "role": "user",
-                    "content": f"Considere o seguinte e-mail com as seguintes palavras-chave: {user_input}. Você considera esse e-mail PRODUTIVO (pergunta sobre alguma tarefa ou prazo) ou IMPRODUTIVO (não pergunta sobre prazo ou tarefa específica)? Responda somente com PRODUTIVO ou IMPRODUTIVO mais um delimitador ( | ) mais uma resposta adequada para o e-mail."
+                    "content": f"Considere o seguinte e-mail (previamente stemmatizado) com as seguintes palavras-chave: {prompt}. Você considera esse e-mail PRODUTIVO (pergunta sobre alguma tarefa ou prazo) ou IMPRODUTIVO (não pergunta sobre prazo ou tarefa específica)? Responda somente com PRODUTIVO ou IMPRODUTIVO mais um delimitador ( | ) mais uma resposta adequada para o e-mail."
                 }
             ],
             model="gpt-4o",
