@@ -26,8 +26,8 @@ Este projeto é um Web App desenvolvido com **Python e Flask**, que utiliza a **
 ### 1️⃣ Clonar o repositório
 
 ```sh
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
+git clone https://github.com/joaopdorea/projetoAuto.git
+cd projetoAuto
 ```
 
 ### 2️⃣ Criar e ativar um ambiente virtual (opcional, mas recomendado)
