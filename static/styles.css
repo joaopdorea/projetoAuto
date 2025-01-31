@@ -1,0 +1,151 @@
+/* Reset de estilos básicos */
+body, h2, input, button, p {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilização do corpo */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Container principal */
+.container {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 500px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.enviar-btn{
+    width: 50%
+}
+
+/* Título */
+h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Campo de entrada */
+input {
+    width: 90%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Botão */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Resposta */
+p {
+    margin-top: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+span {
+    
+    color: #333;
+}
+
+/* ===================== */
+/*         DARK MODE     */
+/* ===================== */
+.dark-mode {
+    background-color: #222;
+    color: #f4f4f4;
+}
+
+.dark-mode .container {
+    background: #333;
+    color: #f4f4f4;
+}
+
+.dark-mode h2 {
+    color: #ffffff;
+}
+
+
+.dark-mode #resposta {
+    color: #ffffff;
+}
+
+.dark-mode #respostaSugerida {
+    color: #ffffff;
+}
+
+.dark-mode input {
+    background: #555;
+    color: #fff;
+    border: 1px solid #777;
+}
+
+.dark-mode button {
+    background-color: #ffffff;
+    color: #222;
+}
+
+.dark-mode button:hover {
+    background-color: #f0f0f0;
+}
+
+/* ===================== */
+/* BOTÃO DO DARK MODE    */
+/* ===================== */
+.dark-mode-btn {
+    position: fixed;
+    bottom: 20px;
+    width: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+    font-weight: 700;
+}
+
+.dark-mode-btn:hover {
+    background: #555;
+}
+
+/* Estilo do botão no modo escuro */
+.dark-mode .dark-mode-btn {
+    background: #ffffff;
+    color: #222;
+}
+
+.dark-mode .dark-mode-btn:hover {
+    background: #f0f0f0;
+}
