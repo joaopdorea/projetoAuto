@@ -49,7 +49,7 @@ pip install -r requirements.txt
 Crie um arquivo `.env` e adicione sua chave de API:
 
 ```
-OPENAI_API_KEY=sua-chave-aqui
+YOUR_API_KEY=sua-chave-aqui
 ```
 
 Ou configure diretamente no código (não recomendado para produção):
